@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-        <div><h3>Home Page</h3></div>
-</body>
-</html>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div><h3>Home Page</h3></div>
+<div>
+    <button type="button" class="btn btn-info"><a href="/employee/add_resume"> Add Resume</a></button>
+    <button type="button" class="btn btn-success"><a href="/employer/search_candidate"> Search Candidate</a></button>
+
+</div>
+{% endblock %}
