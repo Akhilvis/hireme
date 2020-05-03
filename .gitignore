@@ -1,2 +1,3 @@
 /.idea/
-/hireme/candidate/migrations/
+*/migrations/
+*/media/
