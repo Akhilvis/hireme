@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import CandidateBasicInfo, CandidateResume
+
+
+class AuthorAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(CandidateResume, AuthorAdmin)
+admin.site.register(CandidateBasicInfo, AuthorAdmin)

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block style %}
-<style>
+<style xmlns:v-on="http://www.w3.org/1999/xhtml">
         #app {
   text-align: center;
 }
@@ -14,6 +14,8 @@ img {
 button {
 
 }
+
+
 
 
 
@@ -31,27 +33,46 @@ button {
 
 <div class="container">
     <h2>Stacked form</h2>
-    <form action="/action_page.php">
+    <form id="cand_form" action="/action_page.php" method="post" v-on:submit="search">
         <div class="form-group">
-            <label for="email">Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter name" name="name"
+                   required>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter email" name="email"
+                   required>
         </div>
         <div class="form-group">
-            <label for="pwd">Mobile:</label>
-            <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number" name="mobile">
+            <label for="mobile">Mobile:</label>
+            <input type="text" class="form-control" id="mobile" v-model="mobile" placeholder="Enter mobile number"
+                   name="mobile"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Role:</label>
+            <input type="text" class="form-control" id="role" v-model="role" placeholder="Enter current role"
+                   name="mobile"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Total Experience:</label>
+            <input type="text" class="form-control" id="total_exp" v-model="experience" placeholder="Enter total experience"
+                   name="mobile"
+                   required>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+
 </div>
 {% endblock %}
 
 
 {% block script %}
+{{ block.super }}
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-simple-upload@0.1.6/dist/vue-simple-upload.min.js"></script>
 <script src="/static/js/resume_upload.js"></script>
