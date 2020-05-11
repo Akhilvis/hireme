@@ -30,7 +30,8 @@ new Vue({
                 "email": this.email,
                 "mobile": this.mobile,
                 "role": this.role,
-                "experience": this.experience
+                "experience": this.experience,
+                "summary": this.summary
 
                 }, function(result){
                 $("span").html(result);

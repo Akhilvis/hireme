@@ -7,4 +7,6 @@ from .views import *
 
 urlpatterns = [
     path('search_candidate', home, name='home-page'),
+    path('search_with_keyword', SearchCandidate, name='search-with-keyword'),
+    path('load_recent_candidates', LoadRecentCandidates, name='load-recent-candidates'),
 ]

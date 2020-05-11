@@ -26,6 +26,7 @@ def AddCandidateData(request):
     mobile = request.POST.get('mobile', '')
     role = request.POST.get('role', 'Software Engineer')
     experience = request.POST.get('experience', 0)
+    summary = request.POST.get('summary', '')
     print("resume id >>>>>>>>>>>>>>>>>>.  " + str(request.session['resume_id']))
     resume_id = request.session['resume_id']
     if resume_id:
@@ -35,6 +36,7 @@ def AddCandidateData(request):
             email=email,
             role=role,
             total_experience=experience,
+            summary=summary,
             resume=CandidateResume.objects.get(pk=resume_id)
         )
     else:

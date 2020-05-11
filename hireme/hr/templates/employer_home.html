@@ -16,7 +16,20 @@ button {
 
 }
 
+.ui-autocomplete{
+    list-style-type: none;
+    background-color: lavender;
+    width: 86%;
+    padding: 1%;
+}
+.ui-autocomplete > li{
+    padding: 0 12px;
+}
 
+.ui-autocomplete > li:hover{
+    background-color: white;
+    cursor:pointer;
+}
 
 
 
@@ -26,59 +39,51 @@ button {
 {% endblock %}
 
 {% block content %}
+<div id="main">
 <div class="m-5">
-<h4 class="text-center">Search Candidate</h4>
-<div>
-    <div class="ui-widget text-center">
-        <input id="tags" class="text-center" placeholder="Software Engineer" style="width:93%;height:40px;">
+    <h4 class="text-center">Search Candidate</h4>
+    <div>
+        <div id="search_box" class="ui-widget text-center">
+            <input v-model="search_keyword" v-on:keyup="SearchResume" id="search_textbox" class="text-center"
+                   placeholder="Software Engineer" style="width:93%;height:40px;">
+        </div>
     </div>
-</div>
 </div>
 
 <div class="container m-5">
     <h4 class="text-center m-5">Recent Candidates</h4>
-    <div class="card-deck">
-        <div class="card">
-            <img src="/static/avatars/male/avatar1.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
+    <div class="card-deck" id="cand_boxes">
+        <div v-if="loading & recent_candidates.length == 0">
+            loading...
         </div>
-        <div class="card">
-            <img src="/static/avatars/male/avatar1.png" class="card-img-top" alt="...">
+        <div v-else class="card" style="width: 18rem;" v-for="cand in recent_candidates">
+            <img class="card-img-top" src="/static/avatars/male/avatar1.png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+
+                <h5 class="card-title" v-text="cand.name">{{ cand.name }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
             </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img src="/static/avatars/male/avatar1.png" class="card-img-top" alt="...">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" v-text="cand.role">{{ cand.role }}</li>
+                <li class="list-group-item" v-text="cand.email">{{ cand.email }}</li>
+                <li class="list-group-item" v-text="cand.mobile">{{ cand.mobile }}</li>
+            </ul>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <a href="{{ cand.resume.resume.path }}" class="card-link">Download Resume</a>
+                <a href="#" class="card-link">Another link</a>
             </div>
         </div>
     </div>
 </div>
+<input type="hidden" id="all_roles" name="variable" value="{{ all_roles }}">
+
+    </div>
 {% endblock %}
 
 
 {% block script %}
 {{ block.super }}
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="/static/js/search_home.js"></script>
 
 {% endblock %}
