@@ -1,4 +1,5 @@
 import json
+from random import randrange
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -7,6 +8,8 @@ from fuzzywuzzy import process
 # Create your views here.
 from candidate.models import CandidateBasicInfo
 from django.views.decorators.csrf import csrf_exempt
+
+from home.views import bg_colors, get_resume_url
 
 
 def home(request):
@@ -27,20 +30,18 @@ def SearchCandidate(request):
     if keyword:
         all_roles, all_role_ids = CandidateBasicInfo.get_all_roles()
         top3_candidates = process.extract(modified_keyword, all_roles)[:3]
-        print(77, top3_candidates)
-        print("all_roles >>>>   ", all_roles)
         candidates_ids = [all_roles.index(cand[0])+1 for cand in top3_candidates]
-        dict['recent_candidates'] = list(
-            CandidateBasicInfo.objects.filter(id__in=candidates_ids).values().order_by('-id')[:3])
-        print(88, dict['recent_candidates'])
+        all_candidates = CandidateBasicInfo.objects.filter(id__in=candidates_ids).order_by('-id')[:3].values()
 
-        print(666666666666666666, dict)
-    return JsonResponse(dict)
+        last_index = None
+        for cand in all_candidates:
+            if randrange(0, len(bg_colors)) != last_index:
+                last_index = randrange(0, len(bg_colors))
+                cand['color'] = bg_colors[last_index]
+                cand['resume_url'] = get_resume_url(cand['resume_id'])
+            else:
+                cand['color'] = bg_colors[randrange(0, len(bg_colors))]
 
 
-@csrf_exempt
-def LoadRecentCandidates(request):
-    dict = {}
-    dict['recent_candidates'] = list(CandidateBasicInfo.objects.values().order_by('-id')[:3])
-    print("4444444444444444444444444", dict)
+        dict['recent_candidates'] = list(all_candidates)
     return JsonResponse(dict)

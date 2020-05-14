@@ -31,7 +31,7 @@ def AddCandidateData(request):
     resume_id = request.session['resume_id']
     if resume_id:
         CandidateBasicInfo.objects.create(
-            name=name,
+            name=name.title(),
             mobile=mobile,
             email=email,
             role=role,

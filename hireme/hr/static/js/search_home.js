@@ -96,7 +96,7 @@ new Vue({
                     console.log(this.recent_candidates)
                 })
                 .catch(e => {
-                alert(e)
+                console.log(e)
                 })
 
       }
