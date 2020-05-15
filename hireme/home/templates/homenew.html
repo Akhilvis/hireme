@@ -45,8 +45,8 @@
                 <!--	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>-->
                 <!--	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>-->
                 <!--	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>-->
-                <li class="nav-item cta mr-md-2"><a href="new-post.html" class="nav-link">Add Resume</a></li>
-                <li class="nav-item cta cta-colored"><a href="job-post.html" class="nav-link">Find Candidate</a></li>
+                <li style="cursor:pointer"  v-on:click="scroll('#resume_sec')" class="nav-item cta mr-md-2"><a class="nav-link">Add Resume</a></li>
+                <li style="cursor:pointer"  v-on:click="scroll('#hr_sec')"   class="nav-item cta cta-colored"><a href="#" class="nav-link">Find Candidate</a></li>
 
             </ul>
         </div>
@@ -71,7 +71,7 @@
     </div>
 </div>
 
-<section class="ftco-section services-section bg-light">
+<section id="resume_sec" class="ftco-section services-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
@@ -80,9 +80,10 @@
         </div>
         <div class="row d-flex">
             <div class="row">
-                <div id="upload_resume">
-                    <h4>{{ title }}</h4>
+                <div id="upload_resume" style="margin: 2% auto">
+                    <a class="btn btn-success" style="color:white;">Upload Resume
                     <fileupload target="/employee/upload_resume" action="POST"></fileupload>
+                    </a>
                 </div>
 
 
@@ -90,46 +91,46 @@
                     <form method="post" v-on:submit="search" class="form-inline">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="name">Name:</label>
+<!--                            <label for="name">Name:</label>-->
                             <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter name"
                                    name="name"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
+<!--                            <label for="email">Email:</label>-->
                             <input type="email" class="form-control" id="email" v-model="email"
                                    placeholder="Enter email" name="email"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="mobile">Mobile:</label>
+<!--                            <label for="mobile">Mobile:</label>-->
                             <input type="text" class="form-control" id="mobile" v-model="mobile"
                                    placeholder="Enter mobile number"
                                    name="mobile"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="role">Role:</label>
+<!--                            <label for="role">Role:</label>-->
                             <input type="text" class="form-control" id="role" v-model="role"
                                    placeholder="Enter current role"
                                    name="mobile"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="total_exp">Total Experience:</label>
+<!--                            <label for="total_exp">Total Experience:</label>-->
                             <input type="text" class="form-control" id="total_exp" v-model="experience"
                                    placeholder="Enter total experience"
                                    name="mobile"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="summary">Summary</label>
+<!--                            <label for="summary">Summary</label>-->
                             <input type="text" class="form-control" id="summary" v-model="summary"
                                    placeholder="Give a brief summary"
-                                   name="mobile"
+                                   name="mobile" style="width: 784px;"
                                    required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="margin: 0 auto;">Submit</button>
                     </form>
 
 
@@ -139,7 +140,7 @@
     </div>
 </section>
 
-<section class="ftco-section bg-light">
+<section class="ftco-section bg-light" id="hr_sec">
     <div class="container" id="hrsection">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
