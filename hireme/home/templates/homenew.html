@@ -3,7 +3,7 @@
 <head>
     <title>JobPortal</title>
     <meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 
@@ -81,7 +81,7 @@
         <div class="row d-flex">
             <div class="row">
                 <div id="upload_resume" style="margin: 2% auto">
-                    <a class="btn btn-success" style="color:white;">Upload Resume
+                    <a class="btn btn-success" style="color:white;"><span class="hide_text">Upload Resume</span>
                     <fileupload target="/employee/upload_resume" action="POST"></fileupload>
                     </a>
                 </div>
@@ -125,9 +125,9 @@
                         </div>
                         <div class="form-group">
 <!--                            <label for="summary">Summary</label>-->
-                            <input type="text" class="form-control" id="summary" v-model="summary"
+                            <input type="text" class="form-control summary_wid" id="summary" v-model="summary"
                                    placeholder="Give a brief summary"
-                                   name="mobile" style="width: 784px;"
+                                   name="mobile"
                                    required>
                         </div>
                         <button type="submit" class="btn btn-primary" style="margin: 0 auto;">Submit</button>
