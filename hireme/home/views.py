@@ -27,7 +27,7 @@ def home(request):
 def LoadRecentCandidates(request):
     context = {}
     last_index = None
-    all_candidates = CandidateBasicInfo.objects.select_related('resume').order_by('-id')[:3].values()
+    all_candidates = CandidateBasicInfo.objects.select_related('resume').order_by('-id')[:10].values()
     for cand in all_candidates:
         if randrange(0, len(bg_colors)) != last_index:
             last_index = randrange(0, len(bg_colors))

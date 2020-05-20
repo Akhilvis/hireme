@@ -15,8 +15,7 @@ from home.views import bg_colors, get_resume_url
 def home(request):
     context = {}
     context['all_roles'] = json.dumps((CandidateBasicInfo.get_all_roles()[0]))
-    context['recent_candidates'] = CandidateBasicInfo.objects.order_by('-id')[:3]
-
+    context['recent_candidates'] = CandidateBasicInfo.objects.order_by('-id')[:6]
     return render(request, 'employer_home.html', context)
 
 
@@ -24,7 +23,6 @@ def home(request):
 def SearchCandidate(request):
     dict = {}
     data = json.loads(request.body)
-    print(5555, request.body)
     keyword = data.get('search_keyword', None)
     modified_keyword = keyword.lower().replace('software', ' ').strip()
     if keyword:
