@@ -49,9 +49,24 @@ new Vue({
                 "summary": this.summary
 
                 }, function(result){
-                $("span").html(result);
+                console.log(result.status == 0)
+                if(result.status == 0){
+                    $('#resume_success').text('Please upload resume first !')
+                    $('#resume_success').addClass("alert-danger");
+                }
+                else if(result.status == 1){
+                    $('#resume_success').text('Candidate registered successfully !')
+                    $('#resume_success').addClass("alert-success");
+
+                }
+                $('#resume_success').show()
+                this.name = ''
               });
 
         }
     }
+});
+
+$(document).ready(function(){
+    $('#resume_success').hide()
 });

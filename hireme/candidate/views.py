@@ -27,7 +27,7 @@ def AddCandidateData(request):
     role = request.POST.get('role', 'Software Engineer')
     experience = request.POST.get('experience', 0)
     summary = request.POST.get('summary', '')
-    resume_id = request.session['resume_id']
+    resume_id = request.session.get('resume_id', None)
     if resume_id:
         CandidateBasicInfo.objects.create(
             name=name.title(),
@@ -40,6 +40,7 @@ def AddCandidateData(request):
         )
     else:
         print("Resume not uploaded....")
+        return JsonResponse({"status": 0})
 
     request.session['resume_id'] = None
-    return JsonResponse({})
+    return JsonResponse({"status": 1})
