@@ -18,7 +18,7 @@ var app = new Vue({
              $('html, body').animate({
                 scrollTop: $(div_id).offset().top
             }, 1000);
-            $('#ftco-nav').removeClass('show')
+            $('#ftco-nav').removeClass('show');
         }
         }
 })
