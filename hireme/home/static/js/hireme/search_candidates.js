@@ -43,9 +43,6 @@ new Vue({
           	axios.get("/load_recent_candidates").then((response) => {
                 setTimeout(() => this.recent_candidates = response.data.recent_candidates, 500);
                 setTimeout(() => this.loading = false, 500);
-//                  this.recent_candidates = response.data.recent_candidates
-//                  console.log(this.recent_candidates)
-//                  this.loading = false
     })
 
   }

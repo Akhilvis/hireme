@@ -58,6 +58,12 @@ new Vue({
                 else if(result.status == 1){
                     $('#resume_success').text('Candidate registered successfully !')
                     $('#resume_success').addClass("alert-success");
+                    setTimeout(function(){
+                         location.reload();
+                        $('html, body').animate({
+                            scrollTop: $('#hr_sec').offset().top
+                        }, 1000);
+                      }, 3000);
 
                 }
                 $('#resume_success').show()
