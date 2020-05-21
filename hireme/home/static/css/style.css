@@ -8718,3 +8718,9 @@ textarea.form-control {
     .form-group{width:85%;margin:3%;}
     #search_box{width:80%;}
        }
+
+.required:after {
+  content:" *";
+  color: red;
+}
+

@@ -33,7 +33,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="#">#Helpingminds</a>
+        <a class="navbar-brand" href="/">#Helpingminds</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -91,40 +91,40 @@
                     <form method="post" v-on:submit="search" class="form-inline">
                         {% csrf_token %}
                         <div class="form-group">
-<!--                            <label for="name">Name:</label>-->
+                           <label class="required"></label>
                             <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter name"
                                    name="name"
                                    required>
                         </div>
                         <div class="form-group">
-<!--                            <label for="email">Email:</label>-->
+                            <label class="required"></label>
                             <input type="email" class="form-control" id="email" v-model="email"
                                    placeholder="Enter email" name="email"
                                    required>
                         </div>
                         <div class="form-group">
-<!--                            <label for="mobile">Mobile:</label>-->
+                            <label class="required"></label>
                             <input type="text" class="form-control" id="mobile" v-model="mobile"
                                    placeholder="Enter mobile number"
                                    name="mobile"
                                    required>
                         </div>
                         <div class="form-group">
-<!--                            <label for="role">Role:</label>-->
+                            <label class="required"></label>
                             <input type="text" class="form-control" id="role" v-model="role"
                                    placeholder="Enter current role"
                                    name="mobile"
                                    required>
                         </div>
                         <div class="form-group">
-<!--                            <label for="total_exp">Total Experience:</label>-->
+                            <label class="required"></label>
                             <input type="text" class="form-control" id="total_exp" v-model="experience"
                                    placeholder="Enter total experience"
                                    name="mobile"
                                    required>
                         </div>
                         <div class="form-group">
-<!--                            <label for="summary">Summary</label>-->
+                            <label class="required"></label>
                             <input type="text" class="form-control summary_wid" id="summary" v-model="summary"
                                    placeholder="Give a brief summary"
                                    name="mobile"

@@ -12,7 +12,7 @@ class CandidateBasicInfo(models.Model):
     mobile = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
     role = models.CharField(max_length=100, default='Software Engineer')
-    total_experience = models.IntegerField(default=0)
+    total_experience = models.FloatField(default=0.0)
     summary = models.CharField(max_length=150, null=True)
     resume = models.ForeignKey(CandidateResume, on_delete=models.CASCADE, null=True, blank=True)
 
