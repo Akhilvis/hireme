@@ -5,3 +5,4 @@
 /hireme/candidate/migrations/
 /hireme/node_modules/
 /hireme/static/
+*.sqlite3
