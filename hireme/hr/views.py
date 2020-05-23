@@ -26,12 +26,12 @@ def SearchCandidate(request):
     keyword = data.get('search_keyword', None)
     modified_keyword = keyword.lower().replace('software', ' ').strip()
     if keyword:
-        all_roles, all_role_ids = CandidateBasicInfo.get_all_roles()
-        top3_candidates = process.extract(modified_keyword, all_roles)[:3]
-        print('top3_candidates....   ', top3_candidates)
-        candidates_ids = [all_roles.index(cand[0])+1 for cand in top3_candidates]
-        print('candidates_ids....    ', candidates_ids)
-        all_candidates = CandidateBasicInfo.objects.filter(id__in=candidates_ids).order_by('-id')[:3].values()
+        # all_roles, all_role_ids = CandidateBasicInfo.get_all_roles()
+        # top3_candidates = process.extract(modified_keyword, all_roles)[:3]
+        # print('top3_candidates....   ', top3_candidates)
+        # candidates_ids = [all_roles.index(cand[0])+1 for cand in top3_candidates]
+        # print('candidates_ids....    ', candidates_ids)
+        all_candidates = CandidateBasicInfo.objects.filter(role__icontains=modified_keyword).order_by('-id')[:3].values()
 
         last_index = None
         for cand in all_candidates:
