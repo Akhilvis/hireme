@@ -43,6 +43,7 @@ def LoadRecentCandidates(request):
 
 def get_resume_url(resume_id):
     resume_url = CandidateResume.objects.get(pk=resume_id).resume.url
+    resume_url = 'media/' + resume_url.split('media/')[2]
     print("Resume url.... ", resume_url)
 
     return  CandidateResume.objects.get(pk=resume_id).resume.url
